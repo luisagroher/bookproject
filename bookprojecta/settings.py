@@ -28,11 +28,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECRET_KEY = 'a2#b6wo+c1e)ullfllj710lc@%!#8+mkw*@56p#1k%pscch(kb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'ancient-journey-5812.herokuapp.com']
+
 
 
 # Application definition
@@ -103,7 +104,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-MEDIA_ROOT = '/assets/'
+MEDIA_ROOT = ''
 
 STATIC_ROOT = 'staticfiles'
 

@@ -68,6 +68,13 @@ DATABASES = {
     }
 }
 
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
+)
+
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, "templates"),
     # here you can add another templates directory if you wish.

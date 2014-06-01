@@ -1,0 +1,44 @@
+{% load static %}
+{% load url from future %}
+
+{% block newjs %}
+<script src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script>
+ <script src="{% static "assets/js/ajaxforchapters.js" %}"></script>
+{% endblock %}      
+
+<script type="text/javascript">
+urlMap = {
+    {% for value in chapter.values %}
+        {{ value.chapter_id }} : '{% url 'book' %}'
+        {% if not forloop.last %},{% endif %}
+    {% endfor %}
+};
+    $(function() {
+         $("#chapter_select").change(function() {
+            window.location.href = urlMap[$(this).val()];
+        });
+    })
+</script>
+
+
+<form name="select_chapter" action=" " method="get" enctype="multipart/form-data">{% csrf_token %}
+ 
+	<select class="selectBox" 
+	id="chapter_select" style="width:378px; min-height: 30px" name="part">
+	
+	{% for chapter in chapters %}	
+	
+	<option value="{{chapter.id}}"> {{chapter.chaptertitle}}</option>
+
+    {% endfor %}
+	</select>
+</form>
+
+
+					
+{% for chapter in chapters %}
+        
+<a href="{% url 'pageview' chapter.book.id chapter.id %}">{{chapter.chaptertitle}}</a>
+
+<div>{{ paginator.content }}</div>
+{% endfor %}

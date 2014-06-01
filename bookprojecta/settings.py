@@ -76,7 +76,7 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, "templates"),
+    os.path.join(PROJECT_DIR, "book/Templates"),
     # here you can add another templates directory if you wish.
 )
 

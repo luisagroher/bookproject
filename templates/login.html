@@ -1,20 +1,54 @@
 {% extends "base.html" %}
-{% block content%}
+{% load static %}
+
+{% block customcss %}
+    <!-- Custom styles for this template -->
+     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/signin.css" %}">
+ 
+{% endblock %}
+
+{% block container %}
+{% endblock %}
+<!-- Sign In Container -->
+ 
+{% block content %}
 
 
-{% if form.errors %}
+ <html>
+
+   <title>Signin Template for Bootstrap</title>
+  <body>
+ 
+
+<div class="container">
+
+
+
+ {% if form.errors %}
  <p class="error"> Sorry, that's not a valid username or password</p>
 {% endif %}
 
-<form action="/accounts/auth/" method="post">{% csrf_token %}
-	<label for"username"> User name:</label>
-	<input type="text" name="username" value="" id="username">
-	<label for="password"> Password: </label>
-	<input type="password" name="password" value="" id="password">
+<form class="form-signin" role="form" action="/auth/" method="post">{% csrf_token %}
 
-	<input type="submit" value="login" />
+   <h2 class="form-signin-heading">Please sign in</h2> 
+   <input type="username" class="form-control" id="user_login" name="username" value="" placeholder="Email or username" id="username" required autofocus />
+   <input type="password" class="form-control" name="password" placeholder="Password"  value="" id="password" size="30" tabindex="1" required />
+   
+      
+   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	
 
 </form>
-{% endblock %}
+</div>
 
+</body>
+
+</html>
+
+ {% endblock %}
 

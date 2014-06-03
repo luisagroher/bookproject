@@ -73,20 +73,21 @@ class MyNewForm(forms.ModelForm):
         'duplicate_username': _("A user with that username already exists."),
         'password_mismatch': _("The two password fields didn't match."),
     }
-   # username = forms.RegexField(
-    #    label=False, max_length=30, regex=r"^[\w.@+-]+$",
+    username = forms.RegexField(
+        label=False, max_length=30, regex=r"^[\w.@+-]+$",
                 
-        #help_text=_("Required. 30 characters or fewer. Letters, digits and "
+       # help_text=_("Required. 30 characters or fewer. Letters, digits and "
         #              "@/./+/-/_ only."),
-     #   error_messages={
-      #      'invalid': _("This value may contain only letters, numbers and "
-       #                  "@/./+/-/_ characters.")},
-        #widget=forms.TextInput(attrs={'class': 'form-control',
-         #                   'type': "text",
-          #                  'required': 'true',
-           #                 'placeholder': 'Email'
-   # })
-    # ) 
+        error_messages={
+            'invalid': _("This value may contain only letters, numbers and "
+                         "@/./+/-/_ characters.")},
+        widget=forms.TextInput(attrs={'class': 'form-control',
+
+                            'type': "text",
+                            'required': 'true',
+                            'placeholder': 'username'
+    })
+     ) 
     email = forms.EmailField(
         label=False, max_length=30,
         widget=forms.TextInput(attrs={'class': 'form-control',
@@ -127,18 +128,18 @@ class MyNewForm(forms.ModelForm):
             code='duplicate_username',
         )
     
-    #def clean_username(self):
-        # Since User.username is unique, this check is redundant,
-        # but it sets a nicer error message than the ORM. See #13147.
-     #   username = self.cleaned_data["username"]
-      #  try:
-       #     User._default_manager.get(username=username)
-        #except User.DoesNotExist:
-         #   return username
-        #raise forms.ValidationError(
-         #   self.error_messages['duplicate_username'],
-          #  code='duplicate_username',
-        #)
+    def clean_username(self):
+         #Since User.username is unique, this check is redundant,
+         #but it sets a nicer error message than the ORM. See #13147.
+        username = self.cleaned_data["username"]
+        try:
+            User._default_manager.get(username=username)
+        except User.DoesNotExist:
+            return username
+        raise forms.ValidationError(
+            self.error_messages['duplicate_username'],
+            code='duplicate_username',
+        )
         
 
     def clean_password2(self):

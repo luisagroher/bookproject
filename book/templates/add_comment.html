@@ -11,9 +11,8 @@
 
 <form action="/book/add_comment/{{ book.id }}" method="post">{% csrf_token %}
 
-<ul>
-{{form.as_ul}}
-</ul>
+{{form.as_textarea}}
+
 
 <input type="submit" name="submit" value="Post Comment">
 </form>

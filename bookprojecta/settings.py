@@ -106,7 +106,7 @@ USE_TZ = True
 
 MEDIA_ROOT = 'static/images/'
 
-STATIC_ROOT = 'static/'
+STATIC_ROOT = 'assets'
 
 STATIC_URL = '/static/'
 

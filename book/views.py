@@ -206,7 +206,8 @@ def pageview(request, book_id, chapter_id):
                                'previous_page': previous_page,
                                'current_page': current_page, 
                                'pages': pages,
-                               })
+                               },
+                               context_instance=RequestContext(request))
                            
 def count_words(str_obj, num, max_length, chapter_id=1):
     import re

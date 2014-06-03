@@ -1,0 +1,14 @@
+
+{% if books.count > 0 %}
+
+{% for book in books %}
+
+ <p><a href=/book/get/{{ book.id }}>{{ book.title }}</p></a>
+
+{% endfor %}
+
+{% else %}
+
+<li>None to show!</li>
+
+{% endif %}

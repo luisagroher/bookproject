@@ -39,7 +39,7 @@
  		{% for book in books %}
       <div class="item{% if forloop.first %} active{% endif %}">
   		<a href=/book/get/{{book.id}}>
-      	<img data-src="holder.js/100%x100" src="{% static "images/uploaded_files/{{book.banner}}" %}" alt="First slide"/>
+      	<img data-src="holder.js/100%x100" src=static/images/uploaded_files/{{book.banner}} %}" alt="First slide"/>
       	</a>
      	
            <div class="carousel-caption">

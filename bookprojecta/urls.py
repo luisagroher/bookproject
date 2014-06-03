@@ -21,9 +21,6 @@ urlpatterns = patterns('',
     url(r'^about/$', 'bookprojecta.views.about'),
     url(r'^contact/$', 'bookprojecta.views.contact'),
 
-    ##static
 
-    (r’^static/(?P.*)$’, ‘django.views.static.serve’, {‘document_root’ :settings.STATIC_ROOT}),
-)
 
 )

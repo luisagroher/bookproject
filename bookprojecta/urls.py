@@ -20,4 +20,10 @@ urlpatterns = patterns('',
     url(r'^sign_up_success/$', 'bookprojecta.views.register_success'),
     url(r'^about/$', 'bookprojecta.views.about'),
     url(r'^contact/$', 'bookprojecta.views.contact'),
+
+    ##static
+
+    (r’^static/(?P.*)$’, ‘django.views.static.serve’, {‘document_root’ :settings.STATIC_ROOT}),
+)
+
 )

@@ -112,6 +112,6 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = (
- ('assets', os.path.join(os.getcwd(),'static/')),
+ ('assets', os.path.join(BASE_DIR,'static')),
     #os.path.join(BASE_DIR, 'static'),
 )

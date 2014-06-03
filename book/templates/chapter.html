@@ -168,9 +168,9 @@ urlMap = {
       <div class="modal-body">
       
       <form action="{% url 'addcomment' chapter.book.id chapter.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-     <ul rows="3">
+     
 	{{form.as_ul}}
-    </ul>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

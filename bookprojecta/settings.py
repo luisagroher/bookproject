@@ -108,7 +108,7 @@ MEDIA_ROOT = 'static/images/'
 
 STATIC_ROOT = 'assets'
 
-STATIC_URL = '/static/'
+STATIC_URL = 'ancient-journey-5812.herokuapp.com/static/'
 
 
 STATICFILES_DIRS = (

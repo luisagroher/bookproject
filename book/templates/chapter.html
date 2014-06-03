@@ -169,7 +169,7 @@ urlMap = {
       
       <form action="{% url 'addcomment' chapter.book.id chapter.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
      
-	{{form.as_ul}}
+	{{form.as_p}}
 
       </div>
       <div class="modal-footer">

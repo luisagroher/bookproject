@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.staticfiles.views.serve',
-    'django.views.static.serve',
+    #'django.views.static.serve',
     'book',
 )
 

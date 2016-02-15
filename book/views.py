@@ -152,8 +152,19 @@ def delete_comment(request, comment_id):
     
     return HttpResponseRedirect('/book/get/%s' % book_id)
     
-def paginate_content(str_obj, split_string=None, part=1):
-    splitted_string = str_obj.split(split_string) 
+def paginate_content(str_obj, part=1):
+    #splitted_string = str_obj.split(split_string) 
+    splitted_string = str_obj.split(' ')
+    parts = [[]]
+    words_per_page = 300
+    for word in splitted_string:
+        parts[-1].append(word)
+        if len(parts[-1]) == words_per_page:
+            parts.append([])
+    final_parts = []
+    for p in parts:
+        final_parts.append(' '.join(p))
+    splitted_string = final_parts
     paginator = {
         'pages': len(splitted_string),
         'pages_range': range(len(splitted_string)),
@@ -185,8 +196,12 @@ def pageview(request, book_id, chapter_id):
     else:
         part = 0
         
-    split_string = '----split here----'
-    paginator = paginate_content(chapter.text, split_string, part)
+    #split_string = '----split here----'
+
+    #split_string = len()
+
+    #split_string = '\r\n'
+    paginator = paginate_content(chapter.text, part)
     current_page = int((part)+1)
     pages = range(int((part)+1))
     next_page = int(part + 1)

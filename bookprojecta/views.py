@@ -2,9 +2,29 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
+from book.models import Book
 
 #from forms import MyNewForm
 from forms2 import UserForm
+
+def home(request): 
+    language = 'en-us'    
+    session_language = 'en-us'
+    
+    if 'lang' in request.COOKIES:
+        language = request.COOKIES['lang']
+    
+    if 'lang' in request.session:
+        session_language = request.session['lang']
+        
+    args = {}
+    args.update(csrf(request))
+    
+    args['books'] = Book.objects.all()
+    args['language'] = language
+    args['session_language'] = session_language
+        
+    return render_to_response('home.html', args)
 
 
 def login(request):

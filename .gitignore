@@ -1,2 +1,12 @@
 venv
 *.pyc
+staticfiles
+assets
+static
+templates
+.project
+.pydevproject
+db.sqlite3
+manage.py
+Procfile
+sqlite.db
